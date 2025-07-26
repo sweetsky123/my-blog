@@ -79,10 +79,6 @@
       link: https://mabbs.github.io
       avatar: https://avatars0.githubusercontent.com/u/17966333
       descr: Mayx’s Home Page
-    - name: 拂晓不辍
-      link: https://aowu.dog
-      avatar: https://aowu.dog/touxiang.png
-      descr: 老是在幻想自己是主角...
     - name: 幻想の日常
       link: https://blog.someo.top
       avatar: https://blog.someo.top/data/img/tx.jpeg
@@ -95,3 +91,10 @@
       link: https://www.txisfine.cn/
       avatar: https://cdn.txisfine.cn/images/favicon.png
       descr: 小谈谈的一亩三分地
+- class_name: 失联友链
+  class_desc: 愿君早归
+  link_list:
+    - name: 拂晓不辍
+      link: https://aowu.dog
+      avatar: https://aowu.dog/touxiang.png
+      descr: 老是在幻想自己是主角
