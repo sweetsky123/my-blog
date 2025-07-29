@@ -1224,20 +1224,12 @@ inject:
     - <link rel="stylesheet" href="/css/custom.css">
 
   # favicon
-    - <link rel="icon" type="image/png" loading="lazy" href="/favicon/favicon-96x96.png" sizes="96x96" />
-    # - <link rel="icon" type="image/png" loading="lazy" href="https://img.mduge.com/i/2025/04/22/68078a109939b.png" sizes="96x96" />
-    # - <link rel="icon" type="image/png" sizes="32x32" loading="lazy" href="/favicon/favicon-32x32.png">
-    # - <link rel="icon" type="image/png" sizes="32x32" loading="lazy" href="https://img.mduge.com/i/2025/04/22/68078a855a47f.png">
-    # - <link rel="icon" type="image/png" sizes="16x16" loading="lazy" href="/favicon/favicon-16x16.png">
-    # - <link rel="icon" type="image/png" sizes="16x16" loading="lazy" href="https://img.mduge.com/i/2025/04/22/68078aa5ea520.png">
+    - <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
     - <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
-    - <link rel="shortcut icon" loading="lazy" href="/favicon.ico" />
-    # - <link rel="shortcut icon" loading="lazy" href="https://img.mduge.com/i/2025/04/22/68078ac607098.ico" />
-    - <link rel="apple-touch-icon" sizes="180x180" loading="lazy" href="/favicon/apple-touch-icon.png" />
-    # - <link rel="apple-touch-icon" sizes="180x180" loading="lazy" href="https://img.mduge.com/i/2025/04/22/68078af95bfbb.png" />
+    - <link rel="shortcut icon" href="/favicon.ico" />
+    - <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
     - <meta name="apple-mobile-web-app-title" content="花生莲子粥" />
-    # - <link rel="manifest" loading="lazy" href="/favicon/site.webmanifest" />
-    # - <link rel="stylesheet" href="/xxx.css">
+    - <link rel="manifest" href="/favicon/site.webmanifest" />
   bottom:
     # - <script src="xxxx"></script>
 
