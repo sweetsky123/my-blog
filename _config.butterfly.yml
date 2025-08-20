@@ -507,7 +507,7 @@ copy:
   copyright:
     enable: true
     # 当复制字符数超过 limit_count 时添加版权信息
-    limit_count: 150
+    limit_count: 350
 
 # 需要安装 hexo-wordcount 插件
 wordcount:
