@@ -184,7 +184,7 @@ GetSysInfo(){
 	echo -e Bit:${SYS_BIT} Mem:${MEM_TOTAL}M Core:${CPU_INFO}
 	echo -e ${SYS_INFO}
 	echo -e "============================================"
-	echo -e "获取更新包失败
+	echo -e "获取更新包失败，请及时联系 TG群组：@rsakuras 或者 QQ群组：1042692095 进行反馈！"
 	echo -e "============================================"
 	
 	if [ -f "/etc/redhat-release" ];then
@@ -1451,40 +1451,6 @@ Install_Main(){
 	Add_lib_Install
 }
 
-clear
-
-echo -e "\033[1;33m"
-echo ""
-echo ""
-echo -e "\033[1;33m  =================================="
-echo -e "\033[1;33m              赞助商广告"
-echo -e "\033[1;33m  =================================="
-echo ""
-
-echo -e "\033[1;36m  DreamCloud\033[1;33;1m ★【亚太推荐】★\033[1;36m"
-echo -e "  日本高防中国优化服务器，低至\$12.75 USD/月，海外 2Tbps+ 中国 100Gbps"
-echo -e "  https://whmcs.as211392.com/LiteCore-EPYC-NEW?aff=1 "
-echo -e "\033[1;33m"
-
-echo ""
-echo -e "\033[1;35m  KURUN CLOUD\033[1;31;1m ★【欧美推荐】★\033[1;35m"
-echo -e "  美国洛杉矶 CN2GIA+CUPM9929+CMIN2 三网精品回国线路服务器 ★★★ 特价促销中 ★★★  KURUN CLOUD机房直销 最快回国线路 超稳定"
-echo -e "  https://www.kurun.com/aff/HRZUXBJP"
-echo -e "  https://t.me/kuruncloud"
-echo -e "\033[1;33m"
-echo ""
-echo -e "\033[31m  脚本/官网/群组/频道等广告投放价格：300U /月、2500U /年、5000U /长期\033[1;33m"
-echo ""
-echo "  注意：我们不接受面板插入广告，只接受脚本、群组、频道、论坛官网 等广告投放！"
-echo ""
-echo -e "  需要广告位 转账 TRC20：\033[32mTDTor6FUDbP8MQodFMoWTxq6updRCBsDqG\033[1;33m"
-echo ""
-echo -e "  转完之后联系 @pingping_520 发送需要投放的广告内容\033[0m"
-echo ""
-echo -e "\033[1;33m  =================================="
-echo ""
-echo ""
-echo -e "\033[0m"
 
 while [ "$ad_confirm" != 'y' ] && [ "$ad_confirm" != 'n' ]
 do
@@ -1496,7 +1462,6 @@ if [ "$ad_confirm" == 'n' ];then
 	exit;
 fi
 
-clear
 
 echo "
 +----------------------------------------------------------------------
@@ -1614,8 +1579,9 @@ echo -e " 内网面板地址:     ${HTTP_S}://${LOCAL_IP}:${panelPort}${auth_pat
 echo -e " username: $username"
 echo -e " password: $password"
 echo -e ""
+echo -e " 有任何问题可以联系 TG群组：@rsakuras 或者 QQ群组：1042692095 进行反馈！"
+echo -e ""
 echo -e "=================================================================="
-
 
 endTime=`date +%s`
 ((outTime=($endTime-$startTime)/60))
@@ -1629,4 +1595,5 @@ else
 	echo -e "Time consumed:\033[32m $outTime \033[0mMinute!"
 fi
 btpython /www/server/panel/tools.py ssl > /dev/null 2>&1
+
 
