@@ -183,6 +183,9 @@ GetSysInfo(){
 	echo -e ${SYS_VERSION}
 	echo -e Bit:${SYS_BIT} Mem:${MEM_TOTAL}M Core:${CPU_INFO}
 	echo -e ${SYS_INFO}
+	echo -e "============================================"
+	echo -e "获取更新包失败
+	echo -e "============================================"
 	
 	if [ -f "/etc/redhat-release" ];then
 		Centos7Check=$(cat /etc/redhat-release | grep ' 7.' | grep -iE 'centos')
@@ -608,7 +611,7 @@ get_node_url(){
 	rm -f $tmp_file1
 	rm -f $tmp_file2
 	download_Url=$NODE_URL
-	downloads_Url=https://hslzz.cn
+	downloads_Url=https://blog.hslzz.cn
 	echo "Download node: $download_Url";
 	echo '---------------------------------------------';
 }
@@ -1150,7 +1153,7 @@ Install_Bt(){
     fi
 
 	rm -f panel.zip
-	wget -O /www/server/panel/data/userInfo.json http://io.bt.sy/install/userInfo.json
+	wget -O /www/server/panel/data/userInfo.json https://blog.hslzz.cn/install/userInfo.json
 	sed -i 's/[0-9\.]\+[ ]\+www.bt.cn//g' /etc/hosts
 	sed -i 's/[0-9\.]\+[ ]\+api.bt.sb//g' /etc/hosts
 	rm -f ${setup_path}/server/panel/class/*.pyc
@@ -1448,6 +1451,41 @@ Install_Main(){
 	Add_lib_Install
 }
 
+clear
+
+echo -e "\033[1;33m"
+echo ""
+echo ""
+echo -e "\033[1;33m  =================================="
+echo -e "\033[1;33m              赞助商广告"
+echo -e "\033[1;33m  =================================="
+echo ""
+
+echo -e "\033[1;36m  DreamCloud\033[1;33;1m ★【亚太推荐】★\033[1;36m"
+echo -e "  日本高防中国优化服务器，低至\$12.75 USD/月，海外 2Tbps+ 中国 100Gbps"
+echo -e "  https://whmcs.as211392.com/LiteCore-EPYC-NEW?aff=1 "
+echo -e "\033[1;33m"
+
+echo ""
+echo -e "\033[1;35m  KURUN CLOUD\033[1;31;1m ★【欧美推荐】★\033[1;35m"
+echo -e "  美国洛杉矶 CN2GIA+CUPM9929+CMIN2 三网精品回国线路服务器 ★★★ 特价促销中 ★★★  KURUN CLOUD机房直销 最快回国线路 超稳定"
+echo -e "  https://www.kurun.com/aff/HRZUXBJP"
+echo -e "  https://t.me/kuruncloud"
+echo -e "\033[1;33m"
+echo ""
+echo -e "\033[31m  脚本/官网/群组/频道等广告投放价格：300U /月、2500U /年、5000U /长期\033[1;33m"
+echo ""
+echo "  注意：我们不接受面板插入广告，只接受脚本、群组、频道、论坛官网 等广告投放！"
+echo ""
+echo -e "  需要广告位 转账 TRC20：\033[32mTDTor6FUDbP8MQodFMoWTxq6updRCBsDqG\033[1;33m"
+echo ""
+echo -e "  转完之后联系 @pingping_520 发送需要投放的广告内容\033[0m"
+echo ""
+echo -e "\033[1;33m  =================================="
+echo ""
+echo ""
+echo -e "\033[0m"
+
 while [ "$ad_confirm" != 'y' ] && [ "$ad_confirm" != 'n' ]
 do
 	read -p "是否继续执行宝塔面板安装？(y/n): " ad_confirm;
@@ -1576,9 +1614,7 @@ echo -e " 内网面板地址:     ${HTTP_S}://${LOCAL_IP}:${panelPort}${auth_pat
 echo -e " username: $username"
 echo -e " password: $password"
 echo -e ""
-
 echo -e "=================================================================="
-
 
 
 endTime=`date +%s`
@@ -1594,5 +1630,3 @@ else
 fi
 btpython /www/server/panel/tools.py ssl > /dev/null 2>&1
 
-#echo ""
-#echo ""
