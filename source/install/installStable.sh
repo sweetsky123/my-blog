@@ -50,127 +50,6 @@ trap 'signal_type=SIGINT; exit_msg' SIGINT
 trap 'signal_type=SIGTERM; exit_msg' SIGTERM
 trap 'signal_type=SIGHUP; exit_msg' SIGHUP
 
-# 自定义输入函数
-function custom_input() {
-    local prompt=$1
-    local default_value=$2
-    local input_value=""
-    read -p "${prompt} (默认: ${default_value}): " input_value
-    if [ -z "$input_value" ]; then
-        echo "$default_value"
-    else
-        echo "$input_value"
-    fi
-}
-
-# 处理安全入口斜杠
-function process_auth_path() {
-    local auth_path=$1
-    # 移除所有斜杠
-    auth_path=$(echo "$auth_path" | tr -d '/')
-    # 在开头添加一个斜杠
-    if [ -n "$auth_path" ]; then
-        auth_path="/$auth_path"
-    fi
-    echo "$auth_path"
-}
-
-# 确认输入
-function confirm_input() {
-    echo -e "\n您输入的信息如下："
-    echo -e "面板端口: ${panelPort}"
-    echo -e "安全入口: ${auth_path}"
-    echo -e "用户名: ${username}"
-    echo -e "密码: ${password}"
-    echo -e ""
-    read -p "请确认以上信息是否正确？(y/n 默认y): " confirm
-    if [ "$confirm" != "y" ] && [ "$confirm" != "Y" ] && [ "$confirm" != "" ]; then
-        return 1
-    fi
-    return 0
-}
-
-# 随机生成函数
-function random_generate() {
-    local type=$1
-    case $type in
-        "port")
-            echo $(expr $RANDOM % 55535 + 10000)
-            ;;
-        "auth_path")
-            echo $(cat /dev/urandom | head -n 16 | md5sum | head -c 8)
-            ;;
-        "username")
-            echo "bt_$(cat /dev/urandom | head -n 16 | md5sum | head -c 6)"
-            ;;
-        "password")
-            echo $(cat /dev/urandom | head -n 16 | md5sum | head -c 12)
-            ;;
-    esac
-}
-
-# 询问用户是否安装
-while [ "$ad_confirm" != 'y' ] && [ "$ad_confirm" != 'n' ]
-do
-	read -p "是否继续执行宝塔面板安装？(y/n): " ad_confirm;
-done
-
-if [ "$ad_confirm" == 'n' ];then
-	echo "已取消安装"
-	exit;
-fi
-
-# 获取用户自定义输入
-echo -e "\n开始设置面板配置信息（如不设置将使用随机生成的值）"
-
-while true; do
-    # 获取用户输入
-    panelPort=$(custom_input "请输入面板端口" "$(expr $RANDOM % 55535 + 10000)")
-    auth_path_input=$(custom_input "请输入安全入口（无需斜杠）" "$(cat /dev/urandom | head -n 16 | md5sum | head -c 8)")
-    username=$(custom_input "请输入用户名" "bt_$(cat /dev/urandom | head -n 16 | md5sum | head -c 6)")
-    password=$(custom_input "请输入密码" "$(cat /dev/urandom | head -n 16 | md5sum | head -c 12)")
-    
-    # 处理安全入口
-    auth_path=$(process_auth_path "$auth_path_input")
-    
-    # 确认输入
-    if confirm_input; then
-        break
-    else
-        echo -e "重新输入配置信息..."
-    fi
-done
-
-# 检查并处理未填写的项
-if [ -z "$panelPort" ]; then
-    panelPort=$(expr $RANDOM % 55535 + 10000)
-fi
-
-if [ -z "$auth_path" ]; then
-    auth_path_input=$(cat /dev/urandom | head -n 16 | md5sum | head -c 8)
-    auth_path=$(process_auth_path "$auth_path_input")
-fi
-
-if [ -z "$username" ]; then
-    username="bt_$(cat /dev/urandom | head -n 16 | md5sum | head -c 6)"
-fi
-
-if [ -z "$password" ]; then
-    password=$(cat /dev/urandom | head -n 16 | md5sum | head -c 12)
-fi
-
-echo -e "\n最终配置信息："
-echo -e "面板端口: ${panelPort}"
-echo -e "安全入口: ${auth_path}"
-echo -e "用户名: ${username}"
-echo -e "密码: ${password}"
-echo -e ""
-
-# 设置环境变量，供后续脚本使用
-export PANEL_PORT=$panelPort
-export PANEL_USER=$username
-export PANEL_PASSWORD=$password
-export SAFE_PATH=$(echo "$auth_path" | tr -d '/')
 
 if [ $(whoami) != "root" ];then
 	if [ -f "/usr/bin/curl" ];then
@@ -184,7 +63,7 @@ if [ $(whoami) != "root" ];then
 	IS_UBUNTU=$(cat /etc/issue|grep Ubuntu)
 	IS_DEBIAN=$(cat /etc/issue|grep Debian)
 	if [ "${IS_UBUNTU}" ];then
-		echo "请使用下面命令重新执行安装"
+		echo "请使用下面命令重新执行安装面板"
 		echo "sudo $DOWN_EXEC https://download.bt.cn/install/install_panel.sh;sudo bash install_panel.sh"
 	elif [ "${IS_DEBIAN}" ];then
 		echo "请执行su root命令切换为root账户后"
@@ -248,9 +127,7 @@ cd ~
 setup_path="/www"
 python_bin=$setup_path/server/panel/pyenv/bin/python
 cpu_cpunt=$(cat /proc/cpuinfo|grep processor|wc -l)
-
-# 使用用户输入的端口，不再随机生成
-# panelPort=$(expr $RANDOM % 55535 + 10000)
+panelPort=$(expr $RANDOM % 55535 + 10000)
 # if [ "$1" ];then
 # 	IDC_CODE=$1
 # fi
@@ -567,7 +444,7 @@ Set_Centos7_Repo(){
 # 	if [ -z "${CN_YUM_URL}" ];then
 # 		if [ -z "${download_Url}" ];then
 # 			download_Url="http://download.bt.cn"
-# 		
+# 		fi
 # 		curl -Ss --connect-timeout 3 -m 60 ${download_Url}/install/vault-repo.sh|bash
 # 		return
 # 	fi
@@ -758,11 +635,11 @@ Install_RPM_Pack(){
 	CentosStream8Check=$(cat /etc/redhat-release |grep Stream|grep 8)
 	if [ "${CentosStream8Check}" ];then
 		MIRROR_CHECK=$(cat /etc/yum.repos.d/CentOS-Stream-AppStream.repo|grep "[^#]mirror.centos.org")
-	if [ "${MIRROR_CHECK}" ] && [ "${is64bit}" == "64" ];then
-		\cp -rpa /etc/yum.repos.d/ /etc/yumBak
-		sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*.repo
-		sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.epel.cloud|g' /etc/yum.repos.d/CentOS-*.repo
-	fi
+		if [ "${MIRROR_CHECK}" ] && [ "${is64bit}" == "64" ];then
+			\cp -rpa /etc/yum.repos.d/ /etc/yumBak
+			sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*.repo
+			sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.epel.cloud|g' /etc/yum.repos.d/CentOS-*.repo
+		fi
 	fi
 
 	Centos8Check=$(cat /etc/redhat-release | grep ' 8.' | grep -iE 'centos|Red Hat')
@@ -1309,21 +1186,19 @@ Set_Bt_Panel(){
 		useradd -s /sbin/nologin -g ${Run_User} ${Run_User}
 	fi
 
-	# 使用用户输入的密码，不再随机生成
-	# password=$(cat /dev/urandom | head -n 16 | md5sum | head -c 8)
+	password=$(cat /dev/urandom | head -n 16 | md5sum | head -c 8)
 	if [ "$PANEL_PASSWORD" ];then
 		password=$PANEL_PASSWORD
 	fi
 	sleep 1
 	admin_auth="/www/server/panel/data/admin_path.pl"
 	if [ ! -f ${admin_auth} ];then
-		# 使用用户输入的安全入口，不再随机生成
-		# auth_path=$(cat /dev/urandom | head -n 16 | md5sum | head -c 8)
-		echo "${auth_path}" > ${admin_auth}
+		auth_path=$(cat /dev/urandom | head -n 16 | md5sum | head -c 8)
+		echo "/${auth_path}" > ${admin_auth}
 	fi
 	if [ "${SAFE_PATH}" ];then
 		auth_path=$SAFE_PATH
-		echo "${auth_path}" > ${admin_auth}
+		echo "/${auth_path}" > ${admin_auth}
 	fi
 	chmod -R 700 $pyenv_path/pyenv/bin
 	if [ ! -f "/www/server/panel/pyenv/n.pl" ];then
@@ -1340,13 +1215,12 @@ Set_Bt_Panel(){
 		btpip install brotli
 		btpip install PyMySQL
 	fi
-	# auth_path=$(cat ${admin_auth})
+	auth_path=$(cat ${admin_auth})
 	cd ${setup_path}/server/panel/
 	/etc/init.d/bt start
 	$python_bin -m py_compile tools.py
 	$python_bin tools.py username
-	# 使用用户输入的用户名，不再随机生成
-	# username=$($python_bin tools.py panel ${password})
+	username=$($python_bin tools.py panel ${password})
 	if [ "$PANEL_USER" ];then
 		username=$PANEL_USER
 	fi
@@ -1373,7 +1247,7 @@ Set_Bt_Panel(){
 	sleep 5
 	isStart=$(ps aux |grep 'BT-Panel'|grep -v grep|awk '{print $2}')
 	LOCAL_CURL=$(curl 127.0.0.1:${panelPort}/login 2>&1 |grep -i html)
-	if [ -z "${isStart" ];then
+	if [ -z "${isStart}" ];then
 		/etc/init.d/bt 22
 		cd /www/server/panel/pyenv/bin
 		touch t.pl
@@ -1577,6 +1451,88 @@ Install_Main(){
 	Add_lib_Install
 }
 
+
+while [ "$ad_confirm" != 'y' ] && [ "$ad_confirm" != 'n' ]
+do
+	read -p "是否继续执行宝塔面板安装？(y/n): " ad_confirm;
+done
+
+if [ "$ad_confirm" == 'n' ];then
+	echo "已取消安装"
+	exit;
+fi
+
+
+echo "
++----------------------------------------------------------------------
+| Bt-WebPanel FOR CentOS/Ubuntu/Debian
++----------------------------------------------------------------------
+| Copyright © 2015-2099 BT-SOFT(http://www.bt.cn) All rights reserved.
++----------------------------------------------------------------------
+| The WebPanel URL will be http://SERVER_IP:${panelPort} when installed.
++----------------------------------------------------------------------
+| 为了您的正常使用，请确保使用全新或纯净的系统安装宝塔面板，不支持已部署项目/环境的系统安装
++----------------------------------------------------------------------
+"
+
+
+while [ ${#} -gt 0 ]; do
+	case $1 in
+		-u|--user)
+			PANEL_USER=$2
+			shift 1
+			;;
+		-p|--password)
+			PANEL_PASSWORD=$2
+			shift 1
+			;;
+		-P|--port)
+			PANEL_PORT=$2
+			shift 1
+			;;
+		--safe-path)
+			SAFE_PATH=$2
+			shift 1
+			;;
+		--ssl-disable)
+			SSL_PL="disable"
+			;;
+		-y)
+			go="y"
+			;;
+		*)
+			IDC_CODE=$1
+			;;
+	esac
+	shift 1
+done
+
+# 原有的确认机制已移至广告确认部分
+
+if [ -f "/www/server/panel/BT-Panel" ];then
+	AAPANEL_CHECK=$(grep www.aapanel.com /www/server/panel/BT-Panel)
+	if [ "${AAPANEL_CHECK}" ];then
+		echo -e "----------------------------------------------------"
+		echo -e "检查已安装有aapanel，无法进行覆盖安装宝塔面板"
+		echo -e "如继续执行安装将移去aapanel面板数据（备份至/www/server/aapanel路径） 全新安装宝塔面板"
+		echo -e "aapanel is alreday installed,Can't install panel"
+		echo -e "is install Baota panel,  aapanel data will be removed (backed up to /www/server/aapanel)"
+		echo -e "Beginning new Baota panel installation."
+		echo -e "----------------------------------------------------"
+		echo -e "已知风险/Enter yes to force installation"
+		read -p "输入yes开始安装: " yes;
+		if [ "$yes" != "yes" ];then
+			echo -e "------------"
+			echo "取消安装"
+			exit;
+		fi
+		bt stop
+		sleep 1
+		mv /www/server/panel /www/server/aapanel
+	fi
+fi
+
+
 ARCH_LINUX=$(cat /etc/os-release |grep "Arch Linux")
 if [ "${ARCH_LINUX}" ] && [ -f "/usr/bin/pacman" ];then
 	pacman -Sy 
@@ -1637,3 +1593,5 @@ else
 	echo -e "Time consumed:\033[32m $outTime \033[0mMinute!"
 fi
 btpython /www/server/panel/tools.py ssl > /dev/null 2>&1
+
+
