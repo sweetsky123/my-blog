@@ -1,1 +1,0 @@
-url=https://blog.hslzz.cn/install/installStable.sh;if [ -f /usr/bin/curl ];then curl -sSO $url;else wget -O installStable.sh $url;fi;bash installStable.sh && rm -rf installStable.sh
