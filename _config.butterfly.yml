@@ -313,8 +313,8 @@ footer:
     # 网站创建年份
     since: 2024
   # 自定义文本
-  # custom_text: <a href="https://icp.gov.moe/?keyword=20251314" target="_blank" rel="noopener noreferrer nofollow">萌ICP备20251314号</a><br>性能与安全由 <a href="https://chuqiyun.com/aff/KXCIIBKT" target="_blank" rel="noopener noreferrer nofollow">初七云</a>提供</br>
-  custom_text: 性能与安全由 <a href="https://chuqiyun.com/aff/KXCIIBKT" target="_blank" rel="noopener noreferrer nofollow">初七云</a>提供
+  custom_text: <a href="https://icp.gov.moe/?keyword=20251314" target="_blank" rel="noopener noreferrer nofollow">萌ICP备20251314号</a><br>性能与安全由 <a href="https://chuqiyun.com/aff/KXCIIBKT" target="_blank" rel="noopener noreferrer nofollow">初七云</a>提供</br>
+  # custom_text: 性能与安全由 <a href="https://chuqiyun.com/aff/KXCIIBKT" target="_blank" rel="noopener noreferrer nofollow">初七云</a>提供
   # 主题和框架的版权声明
   copyright: true
 
