@@ -2,7 +2,7 @@
   class_desc: 各位奠基的框架们
   link_list:
     - name: Hexo
-      link: https://hexo.io/zh-tw/
+      link: https://hexo.io/zh-cn/
       avatar: https://d33wubrfki0l68.cloudfront.net/6657ba50e702d84afb32fe846bed54fba1a77add/827ae/logo.svg
       descr: 快速、简洁且高效的博客框架
     - name: Node.js
@@ -13,6 +13,10 @@
       link: https://butterfly.js.org/
       avatar: https://butterfly.js.org/img/butterfly-icon.png
       descr: 基于hexo-theme-melody的基础上进行开发的主题
+    - name: Let’s Encrypt
+      link: https://letsencrypt.org/blog/
+      avatar: https://letsencrypt.org/images/le-logo-lockonly.svg
+      descr: 免费、开放、自动化的证书颁发机构
 
 - class_name: 推荐友链
   class_desc: 相谈甚多的朋友们
