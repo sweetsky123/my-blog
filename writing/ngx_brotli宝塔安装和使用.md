@@ -10,6 +10,7 @@ cd
 rm -rf /www/server/nginx/src/ngx_brotli
 # 克隆 ngx_brotli 及子模块
 git clone --recurse-submodules -j8 https://github.com/google/ngx_brotli.git /www/server/nginx/src/ngx_brotli
+rm -rf /www/server/nginx/src/ngx_brotli/.git
 cd /www/server/nginx/src/ngx_brotli/deps/brotli
 mkdir out && cd out
 cmake -DCMAKE_BUILD_TYPE=Release \
