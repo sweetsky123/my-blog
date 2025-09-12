@@ -52,6 +52,55 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+<!-- Ubuntu一步到位改语言、时区、更新源、DNS -->
+  <url>
+    <loc>https://blog.hslzz.cn/posts/20250602092500.html</loc>
+    <lastmod>2025-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+<!-- 利用CDN自定义请求报头功能实现源站精确获得访客ip -->
+  <url>
+    <loc>https://blog.hslzz.cn/posts/20250608224520.html</loc>
+    <lastmod>2025-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+<!-- 给自己的服务器自签SSL/TLS证书用于内网通信 -->
+  <url>
+    <loc>https://blog.hslzz.cn/posts/20250716103520.html</loc>
+    <lastmod>2025-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+<!-- 雷池WAF-LTS版本安装教程 -->
+  <url>
+    <loc>https://blog.hslzz.cn/posts/20250717055500.html</loc>
+    <lastmod>2025-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+<!-- 使用AllinSSL实现自动续签雷池WAF的SSL证书 -->
+  <url>
+    <loc>https://blog.hslzz.cn/posts/20250718182520.html</loc>
+    <lastmod>2025-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+<!-- Matrix+Synapse部署教程 -->
+  <url>
+    <loc>https://blog.hslzz.cn/posts/20250728233050.html</loc>
+    <lastmod>2025-09-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+<!-- 解决Ubuntu的DNS问题 -->
+  <url>
+    <loc>https://blog.hslzz.cn/posts/20250912183050.html</loc>
+    <lastmod>2025-09-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
   <!-- 更多页面... -->
   <!-- 友链页 -->
   <url>
