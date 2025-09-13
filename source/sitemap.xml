@@ -3,7 +3,7 @@
   <!-- 首页 -->
   <url>
     <loc>https://blog.hslzz.cn</loc>
-    <lastmod>2024-12-30</lastmod>
+    <lastmod>2025-09-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -105,7 +105,7 @@
   <!-- 友链页 -->
   <url>
     <loc>https://blog.hslzz.cn/link</loc>
-    <lastmod>2025-01-01</lastmod>
+    <lastmod>2025-09-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.1</priority>
   </url>
