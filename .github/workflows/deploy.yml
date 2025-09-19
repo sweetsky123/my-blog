@@ -46,6 +46,18 @@ jobs:
       run: |
         npm install --save
 
+    - name: 检测 Node 版本
+      run: |
+        node -v
+
+    - name: 检测 npm 版本
+      run: |
+        npm -v
+
+    - name: 检测 Hexo 版本
+      run: |
+        hexo -v
+
     - name: 清理文件树
       run: |
         npm run clean
