@@ -36,7 +36,7 @@
     <loc>https://blog.hslzz.cn/posts/20250217135000.html</loc>
     <lastmod>2025-02-17</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
+    <priority>0.3</priority>
   </url>
   <!-- 给Hexo的全站外链加上rel属性 -->
   <url>
@@ -90,7 +90,7 @@
 <!-- Matrix+Synapse部署教程 -->
   <url>
     <loc>https://blog.hslzz.cn/posts/20250728233050.html</loc>
-    <lastmod>2025-09-12</lastmod>
+    <lastmod>2025-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -105,7 +105,7 @@
   <!-- 友链页 -->
   <url>
     <loc>https://blog.hslzz.cn/link</loc>
-    <lastmod>2025-09-13</lastmod>
+    <lastmod>2025-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.1</priority>
   </url>
