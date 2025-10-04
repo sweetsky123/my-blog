@@ -40,17 +40,13 @@
 - class_name: 好朋友们
   class_desc: 善良可爱的朋友们
   link_list:
-    - name: Android
-      link: https://android99.com
-      avatar: https://android99.com/img/avatar.png
-      descr: 边缘矩阵
     - name: 纸鹿摸鱼处
       link: https://blog.zhilu.cyou/
       avatar: https://www.zhilu.cyou/api/avatar.png
       descr: 纸鹿至麓不知路，支炉制露不止漉
     - name: 葱苓sama
       link: https://blog.ciraos.top/
-      avatar: https://mx.ciraos.top/api/v2/objects/avatar/ufh295h43mly31gmw0.avif
+      avatar: https://blog.ciraos.top/api/f/RgeK/avatar1.avif
       descr: Do not worry, be happy.
     - name: 陌颜Hao
       link: https://blog.imoyan.top/
@@ -72,6 +68,14 @@
       link: https://blog.storical.fun/
       avatar: https://blog.storical.fun/images/icon.png
       descr: 一起来绘制属于自己的星星！
+    - name: Android
+      link: https://android99.com
+      avatar: https://android99.com/img/avatar.png
+      descr: 边缘矩阵
+    - name: 梦溯·镜影
+      link: https://yumetsuki.moe/
+      avatar: https://img.r2.yumetsuki.moe/avatar.webp
+      descr: sleeeeep
 #    - name: Tianli
 #      link: https://blog.tianli0.top/
 #      avatar: https://q2.qlogo.cn/headimg_dl?dst_uin=507249007&spec=640
@@ -103,14 +107,14 @@
       link: https://www.txisfine.cn/
       avatar: https://cdn.txisfine.cn/images/favicon.png
       descr: 小谈谈的一亩三分地
-    - name: ZERO开发
-      link: https://www.zerofc.cn/
-      avatar: https://pica.zhimg.com/80/v2-a67e0f93ae57170e033e56834c841c43_720w.png
-      descr: 一个持续探索副业的独立开发者博客
-- class_name: 失联友链
-  class_desc: 愿君早归
-  link_list:
-    - name: 拂晓不辍
-      link: https://aowu.dog
-      avatar: https://aowu.dog/touxiang.png
-      descr: 老是在幻想自己是主角
+#     - name: ZERO开发
+#       link: https://www.zerofc.cn/
+#       avatar: https://pica.zhimg.com/80/v2-a67e0f93ae57170e033e56834c841c43_720w.png
+#       descr: 一个持续探索副业的独立开发者博客
+# - class_name: 失联友链
+#   class_desc: 愿君早归
+#   link_list:
+#     - name: 拂晓不辍
+#       link: https://aowu.dog
+#       avatar: https://aowu.dog/touxiang.png
+#       descr: 老是在幻想自己是主角
