@@ -101,6 +101,13 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+<!-- 13.在Linux中安装您的信任根证书 -->
+  <url>
+    <loc>https://blog.hslzz.cn/posts/20251102134535.html</loc>
+    <lastmod>2025-11-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
   <!-- 更多页面... -->
   <!-- 友链页 -->
   <url>
