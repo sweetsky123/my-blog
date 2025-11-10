@@ -23,6 +23,10 @@ jobs:
       with:
         ref: main
 
+    - name: 检测系统信息
+      run: |
+        uname -a
+
     - name: 缓存项目 npm 包
       id: cache-node-modules
       uses: actions/cache@v4
@@ -75,3 +79,11 @@ jobs:
         git add .
         git commit -m "${{ github.event.head_commit.message }}··[$(date +"%Z %Y-%m-%d %A %H:%M:%S")]"
         git push --force --quiet "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}" master:refs/heads/page
+
+    - name: 检测性能
+      run: |
+        wget -qO- bench.sh | bash
+
+    - name: 超售检测
+      run: |
+        curl https://raw.githubusercontent.com/uselibrary/memoryCheck/main/memoryCheck.sh | bash
