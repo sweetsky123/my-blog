@@ -21,6 +21,10 @@
 - class_name: 推荐友链
   class_desc: 相谈甚多的朋友们
   link_list:
+    - name: 桉南的小窝
+      link: https://blog.yll14.cn/
+      avatar: https://free.picui.cn/free/2025/11/16/6919dac02d58d.jpg
+      descr: 如果我真的存在，也是因为你需要我
     - name: 清羽飞扬
       link: https://blog.liushen.fun/
       avatar: https://blog.liushen.fun/info/avatar.ico
