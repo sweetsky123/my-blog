@@ -92,9 +92,9 @@ jobs:
       run: |
         wget -qO- yabs.sh | bash
 
-    - name: 获取独服硬盘时间
-      run: |
-        wget -q https://github.com/Aniverse/A/raw/i/a && bash a 
+    #- name: 获取独服硬盘时间
+      #run: |
+        #wget -q https://github.com/Aniverse/A/raw/i/a && bash a 
 
     - name: 超售检测
       run: |
