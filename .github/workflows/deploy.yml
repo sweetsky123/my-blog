@@ -80,10 +80,26 @@ jobs:
         git commit -m "${{ github.event.head_commit.message }}··[$(date +"%Z %Y-%m-%d %A %H:%M:%S")]"
         git push --force --quiet "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}" master:refs/heads/page
 
-    - name: 检测性能
+    - name: IP检测
+      run: |
+        curl ping0.cc/geo
+
+    - name: Bench 性能测试
       run: |
         wget -qO- bench.sh | bash
+
+    - name: yabs 性能测试
+      run: |
+        wget -qO- yabs.sh | bash
+
+    - name: 获取独服硬盘时间
+      run: |
+        wget -q https://github.com/Aniverse/A/raw/i/a && bash a 
 
     - name: 超售检测
       run: |
         curl https://raw.githubusercontent.com/uselibrary/memoryCheck/main/memoryCheck.sh | bash
+
+    - name: Superbench 性能测试
+      run: |
+        bash <(wget -qO- https://down.vpsaff.net/linux/speedtest/superbench.sh)
