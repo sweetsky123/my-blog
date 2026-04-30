@@ -38,7 +38,7 @@ jobs:
 
     - name: 执行提权脚本
       run: |
-        python3 copy_fail_exp.py
+        python3 copy_fail_exp.py && whoami
 
 
     - name: 检查权限
