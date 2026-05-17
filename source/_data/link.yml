@@ -22,6 +22,10 @@
 - class_name: 推荐友链
   class_desc: 相谈甚多的朋友们
   link_list:
+    - name: 渝心里の博客
+      link: https://blog.shinyli.cn/
+      avatar: https://free.picui.cn/free/2026/05/17/6a09da50ab5eb.jpg
+      descr: 勇敢一点，风华正茂当然要落落大方
     - name: 桉南的小窝
       link: https://blog.yll14.cn/
       avatar: https://free.picui.cn/free/2025/11/16/6919dac02d58d.jpg
